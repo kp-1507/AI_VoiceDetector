@@ -40,7 +40,7 @@ export const createTest = async (req, res) => {
 }
 
 
-const addProblems = async (req, res) => {
+export const addProblemsFromCsv = async (req, res) => {
    try {
       const { testId } = req.params;
       const { file } = req;
@@ -114,7 +114,7 @@ export const removeProblem = async (req, res) => {
 
       const problemIndex = test.problems.findIndex(p => p._id.toString() === problemId);
 
-      if (problemId === -1) {
+      if (problemIndex === -1) {
          return res.status(404).json({ msg: "Problem not found in the test" });
       }
       test.problems.splice(problemIndex, 1);
@@ -196,6 +196,154 @@ export const activateTest = async (req, res) => {
    }
 }
 
+
+export const addSingleStudent = async (req, res) => {
+   try {
+      const { testId } = req.params;
+      const { name, scholarId, email } = req.body;
+      const { user: examinerUser } = req;
+
+      const examiner = await Examiner.findOne({ user: examinerUser._id });
+      if (!examiner) return res.status(401).json({ msg: "Unauthorized" });
+      const test = await Test.findById(testId);
+      if (!test) return res.status(404).json({ msg: "Test not found" });
+      if (test.examiner.toString() !== examiner._id.toString())
+         return res.status(401).json({ msg: "Examiner Unauthorized" });
+
+      if (test.status !== 'draft') {
+         return res.status(400).json({ msg: "Cannot add students to an active or finished test" });
+      }
+
+
+      const existingStudent = await Student.findOne({ scholarId });
+      if (existingStudent) {
+         if (test.students.includes(existingStudent._id)) {
+            return res.status(400).json({ msg: "Student already added to this test" });
+         }
+
+         test.students.push(existingStudent._id);
+         await test.save();
+         return res.status(200).json({ msg: "Student added to Test", student: existingStudent });
+      }
+
+      const tempPassword = uuidv4().slice(0, 8); // Generate a temporary password
+      const hashedPassword = await bcrypt.hash(tempPassword, 10);
+
+      const newUser = await User.create({
+         name,
+         email,
+         username: scholarId,
+         role: 'student',
+         password: hashedPassword
+      })
+
+      const newStudent = await Student.create({
+         user: newUser._id,
+         scholarId,
+         department: test.department || 'General', // Default to 'General' if not specified
+      })
+
+      test.students.push(newStudent._id);
+      await test.save();
+
+      console.log(`Student ${name} added with temporary password: ${tempPassword}`);
+
+      return res.status(200).json({ msg: "New student created and added to Test", student: newStudent, tempPassword });
+
+   } catch (error) {
+      console.log("Error adding single student:", error);
+      res.status(500).json({ msg: "Internal server error" });
+   }
+}
+
+
+
+export const addStudentsFromCsv = async (req, res) => {
+   try {
+      const { testId } = req.params;
+      const { file } = req;
+      const { user: examinerUser } = req;
+
+      const examiner = await Examiner.findOne({ user: examinerUser._id });
+      if (!examiner) return res.status(401).json({ msg: "Unauthorized: Examiner not found" });
+
+      const test = await Test.findById(testId);
+      if (!test) return res.status(404).json({ msg: "Test not found" });
+
+      if (test.examiner.toString() !== examiner._id.toString()) {
+         return res.status(401).json({ msg: "Unauthorized: Not the test owner" });
+      }
+
+      if (test.status !== 'draft') {
+         return res.status(400).json({ msg: "Cannot add students to an active or finished test" });
+      }
+
+      if (!file) return res.status(400).json({ msg: "No CSV file uploaded" });
+
+      const addedStudents = [];
+      const bufferStream = new Readable();
+      bufferStream.push(file.buffer);
+      bufferStream.push(null);
+
+      bufferStream
+         .pipe(csv())
+         .on('data', async (data) => {
+            // Assuming CSV headers are 'name', 'scholarId', 'email', 'department'
+            const { name, scholarId, email, department } = data;
+            if (!name || !scholarId || !email) {
+               console.warn("Skipping row due to missing data:", data);
+               return;
+            }
+
+            try {
+               const existingStudent = await Student.findOne({ scholarId });
+               if (existingStudent) {
+                  // If student is not already on the test, add them.
+                  if (!test.students.includes(existingStudent._id)) {
+                     test.students.push(existingStudent._id);
+                     addedStudents.push(existingStudent);
+                  }
+               } else {
+                  // Create new User and Student
+                  const tempPassword = uuidv4().substring(0, 8);
+                  const hashedPassword = await bcrypt.hash(tempPassword, 10);
+
+                  const newUser = await User.create({
+                     name,
+                     email,
+                     username: scholarId,
+                     password: hashedPassword,
+                     role: 'student',
+                  });
+
+                  const newStudent = await Student.create({
+                     user: newUser._id,
+                     scholarId,
+                     department
+                  });
+
+                  test.students.push(newStudent._id);
+                  addedStudents.push(newStudent);
+               }
+            } catch (dbError) {
+               console.error("Database error processing CSV row:", dbError);
+            }
+         })
+         .on('end', async () => {
+            try {
+               await test.save();
+               res.status(200).json({ msg: "Students processed successfully", addedStudents });
+            } catch (saveError) {
+               console.error("Error saving test after CSV import:", saveError);
+               res.status(500).json({ msg: "Error saving student data" });
+            }
+         });
+
+   } catch (error) {
+      console.error("Error adding students from CSV:", error);
+      res.status(500).json({ msg: "Internal server error" });
+   }
+}
 
 // export const createTest = async (req, res) => {
 //    try {
