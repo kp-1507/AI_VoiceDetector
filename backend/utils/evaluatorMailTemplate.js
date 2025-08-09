@@ -19,8 +19,4 @@ export async function sendEvaluatorInviteMail(toEmail, link) {
       subject: "Test Evaluation Invitation",
       html: mailHTML,
    });
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 587950ddd6b1d81183998ee5a3b3c3c01bfc1aa5

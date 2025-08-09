@@ -223,4 +223,4 @@ const RemoveStudent = () => {
    );
 };
 
-// export default RemoveStudent;
+export default RemoveStudent;

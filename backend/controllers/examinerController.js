@@ -17,13 +17,8 @@ export const inviteStudents = async (req, res) => {
       const test = await Test.findById(testId);
       if (!test) return res.status(404).json({ msg: "Test not found" });
 
-<<<<<<< HEAD
-      const examiner = await Examiner.findOne({ user: user._id })
-
-=======
       const examiner = await Examiner.findOne({ user: user._id });
       if (!examiner) return res.status(401).json({ msg: "Unauthorized" });
->>>>>>> 587950ddd6b1d81183998ee5a3b3c3c01bfc1aa5
       if (test.examiner.toString() !== examiner._id.toString())
          return res.status(401).json({ msg: "Unauthorized" });
 
