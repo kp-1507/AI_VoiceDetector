@@ -298,7 +298,6 @@ export const addStudentsFromCsv = async (req, res) => {
             try {
                const existingStudent = await Student.findOne({ scholarId });
                if (existingStudent) {
-                  // If student is not already on the test, add them.
                   if (!test.students.includes(existingStudent._id)) {
                      test.students.push(existingStudent._id);
                      addedStudents.push(existingStudent);
