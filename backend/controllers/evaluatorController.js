@@ -33,7 +33,7 @@ export const addPendingEvaluator = async (req, res) => {
          let evaluator = await Evaluator.findOne({ email: evaluatorEmail })
 
          if (evaluator) {
-            const acceptToken = jwt.sign({ evaluatorId: evaluator._id, testId }, process.env.JWT_SECRET, { expiresIn: "15m" })
+            const acceptToken = jwt.sign({ evaluatorId: evaluator._id, testId }, process.env.JWT_SECRET, { expiresIn: "7d" })
 
             const link = `http://localhost:3000/evaluator/accept?testId=${testId}&token=${acceptToken}`;
 

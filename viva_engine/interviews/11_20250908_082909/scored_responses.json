@@ -1,0 +1,24 @@
+[
+    {
+        "question": "who are you ",
+        "answer": "myself Suresh Patil currently I am studying BTech and my major is in electronics and communication engineering I am doing this from NIT schedule and currently I am in final year of my engineering my hobbies include playing cricket and watching cricket as well as I am more of very order",
+        "gpt_4_score": 6.0,
+        "opus_4_score": 4.0,
+        "llama_3.3_score": 6.0,
+        "average_score": 5.33,
+        "gpt_feedback": "Covers personal details but lacks depth, structure, and reasoning; some facts unclear (e.g., 'NIT schedule').",
+        "claude_feedback": "Provides basic information but lacks structure and clarity.",
+        "llama_feedback": "Answer is mostly accurate but lacks clear structure and proper terminology"
+    },
+    {
+        "question": "fine?",
+        "answer": "yes I am fine life is going good and I am facing lot of electricity but I am facing them with courage I have a velocity to challenge the greatest Minds at any stage whenever I feel kind of immediate or you know whenever I feel like I am not doing good",
+        "gpt_4_score": 2.0,
+        "opus_4_score": 2.0,
+        "llama_3.3_score": 4.0,
+        "average_score": 2.67,
+        "gpt_feedback": "Answer drifts off-topic, misuses terms like 'velocity', lacks structure, and ignores the implicit request for a brief, coherent update.",
+        "claude_feedback": "Answer is rambling and lacks focus on the question.",
+        "llama_feedback": "Answer lacks relevance and clarity in addressing the question."
+    }
+]

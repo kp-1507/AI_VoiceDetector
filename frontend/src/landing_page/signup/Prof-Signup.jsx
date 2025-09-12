@@ -41,7 +41,7 @@ const Prof_Signup = ({ onClose }) => {
     e.preventDefault();
 
     // ✅ Check admin password before API call
-if (adminPassword !== process.env.ADMIN_PASSWORD) {
+if (adminPassword !== process.env.REACT_APP_ADMIN_PASSWORD) {
   handleError("Admin password incorrect!");
   return;
 }

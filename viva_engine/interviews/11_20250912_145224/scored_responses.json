@@ -1,0 +1,13 @@
+[
+    {
+        "question": "who are you ",
+        "answer": "I am Batman I am Batman I am vengeance",
+        "gpt_4_score": 0.0,
+        "opus_4_score": 1.0,
+        "llama_3.3_score": 0.0,
+        "average_score": 0.33,
+        "gpt_feedback": "Answer is completely off-topic and provides no factual information.",
+        "claude_feedback": "Answer is irrelevant and lacks clarity.",
+        "llama_feedback": "The answer is completely unrelated to the context and question asked"
+    }
+]

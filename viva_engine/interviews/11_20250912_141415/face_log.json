@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-09-12T14:15:06.542061",
+    "status": "ok",
+    "snapshot": "snapshot_1757666706.jpg"
+  },
+  {
+    "timestamp": "2025-09-12T14:15:19.185644",
+    "status": "no_face",
+    "snapshot": "snapshot_1757666719.jpg"
+  },
+  {
+    "timestamp": "2025-09-12T14:15:28.635293",
+    "status": "no_face",
+    "snapshot": "snapshot_1757666728.jpg"
+  },
+  {
+    "timestamp": "2025-09-12T14:15:39.663997",
+    "status": "no_face",
+    "snapshot": "snapshot_1757666739.jpg"
+  },
+  {
+    "timestamp": "2025-09-12T14:15:54.422840",
+    "status": "no_face",
+    "snapshot": "snapshot_1757666754.jpg"
+  },
+  {
+    "timestamp": "2025-09-12T14:16:09.970834",
+    "status": "no_face",
+    "snapshot": "snapshot_1757666769.jpg"
+  },
+  {
+    "timestamp": "2025-09-12T14:16:22.573598",
+    "status": "ok",
+    "snapshot": "snapshot_1757666782.jpg"
+  },
+  {
+    "timestamp": "2025-09-12T14:16:38.611294",
+    "status": "ok",
+    "snapshot": "snapshot_1757666798.jpg"
+  },
+  {
+    "timestamp": "2025-09-12T14:16:52.783595",
+    "status": "ok",
+    "snapshot": "snapshot_1757666812.jpg"
+  },
+  {
+    "timestamp": "2025-09-12T14:17:05.403800",
+    "status": "ok",
+    "snapshot": "snapshot_1757666825.jpg"
+  }
+]

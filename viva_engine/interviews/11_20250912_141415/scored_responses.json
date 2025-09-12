@@ -1,0 +1,24 @@
+[
+    {
+        "question": "who are you ",
+        "answer": "aur 30 second ke bad FIR khatm ho jaaye",
+        "gpt_4_score": 0.0,
+        "opus_4_score": 0.0,
+        "llama_3.3_score": 0.0,
+        "average_score": 0.0,
+        "gpt_feedback": "Answer is irrelevant and does not address the question.",
+        "claude_feedback": "The answer is irrelevant and does not address the question.",
+        "llama_feedback": "The answer does not address the question of who the student is."
+    },
+    {
+        "question": "fine?",
+        "answer": "Could not understand audio.",
+        "gpt_4_score": 0.0,
+        "opus_4_score": 1.0,
+        "llama_3.3_score": 0.0,
+        "average_score": 0.33,
+        "gpt_feedback": "No content provided to assess.",
+        "claude_feedback": "The answer does not address the question.",
+        "llama_feedback": "The student was unable to provide a response due to audio issues."
+    }
+]

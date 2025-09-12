@@ -30,7 +30,7 @@ const Footer = () => {
       if (!studentId) return;
       console.log(`📡 GET /api/student/by-scholar/${studentId}`);
       const res = await axios.get(
-        `http://localhost:5000/api/student/${studentId}/fetchId`,
+        `${process.env.REACT_APP_EXPRESS_BACKEND_URI}/student/${studentId}/fetchId`,
         { withCredentials: true }
       );
       console.log("studentId from model",res.data);
@@ -48,7 +48,7 @@ const Footer = () => {
       try {
         console.log("📡 GET /api/student/upcoming");
         const res = await axios.get(
-          "http://localhost:5000/api/student/upcoming",
+          `${process.env.REACT_APP_EXPRESS_BACKEND_URI}/student/upcoming`,
           {
             withCredentials: true,
           }
@@ -74,7 +74,7 @@ const Footer = () => {
       try {
         console.log(`📡 GET /api/testattempt/${studentMongoId}/${test._id}`);
         const res = await axios.get(
-          `http://localhost:5000/api/testAttempt/${studentMongoId}/${test._id}/fetch_test_attempt`,
+          `${process.env.REACT_APP_EXPRESS_BACKEND_URI}/testAttempt/${studentMongoId}/${test._id}/fetch_test_attempt`,
           { withCredentials: true }
         );
 
@@ -99,7 +99,7 @@ const Footer = () => {
   const handleSubmitTest = async (studentMongoId, testId) => {
   try {
     await axios.post(
-      `http://localhost:5000/api/testAttempt/${studentMongoId}/${testId}/submit`,
+      `${process.env.REACT_APP_EXPRESS_BACKEND_URI}/testAttempt/${studentMongoId}/${testId}/submit`,
       {},
       { withCredentials: true }
     );
@@ -125,7 +125,7 @@ const Footer = () => {
 
         console.log(`📡 GET /api/evaluator/${candidateId}/studresults`);
         const res = await axios.get(
-          `http://localhost:5000/api/evaluator/${candidateId}/studresults`,
+          `${process.env.REACT_APP_EXPRESS_BACKEND_URI}/evaluator/${candidateId}/studresults`,
           { withCredentials: true }
         );
         console.log(
@@ -165,7 +165,7 @@ const Footer = () => {
     try {
       console.log(`📡 GET /api/test/${sharedLinkId}/title`);
       const res = await axios.get(
-        `http://localhost:5000/api/test/${sharedLinkId}/title`,
+        `${process.env.REACT_APP_EXPRESS_BACKEND_URI}/test/${sharedLinkId}/title`,
         {
           withCredentials: true,
         }
@@ -212,19 +212,19 @@ const Footer = () => {
     setStartingTestId(testMongoId);
     try {
       await axios.post(
-        `http://localhost:5000/api/student/join/${testMongoId}`,
+        `${process.env.REACT_APP_EXPRESS_BACKEND_URI}/student/join/${testMongoId}`,
         {},
         { withCredentials: true }
       );
 
       const res = await axios.post(
-        `http://localhost:5000/api/student/start/${testMongoId}`,
+        `${process.env.REACT_APP_EXPRESS_BACKEND_URI}/student/start/${testMongoId}`,
         {},
         { withCredentials: true }
       );
 
       if (res.status === 200) {
-        const streamlitUrl = `http://localhost:8501/?testId=${sharedLinkId}&studentId=${studentId}`;
+        const streamlitUrl = `${process.env.REACT_APP_STREAMLIT}/?testId=${sharedLinkId}&studentId=${studentId}`;
         window.open(streamlitUrl, "_blank");
       } else {
         alert(
