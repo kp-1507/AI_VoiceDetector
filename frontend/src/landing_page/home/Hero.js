@@ -5,7 +5,7 @@ function Hero() {
   return (
     <div className="container py-3">
       <div className="row justify-content-center text-center">
-        <div className="col-12 mb-1">
+        <div className="col-12 mb-1" style={{ marginTop: "1.7cm" }}>
           <div
             className="p-0"
             style={{
