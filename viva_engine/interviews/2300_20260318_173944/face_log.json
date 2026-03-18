@@ -1,0 +1,104 @@
+[
+  {
+    "timestamp": "2026-03-18T17:39:55.162704",
+    "status": "no_face",
+    "snapshot": "snapshot_1773835795.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T17:39:56.292045",
+    "status": "no_face",
+    "snapshot": "snapshot_1773835796.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T17:39:57.593238",
+    "status": "no_face",
+    "snapshot": "snapshot_1773835797.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T17:39:58.892944",
+    "status": "no_face",
+    "snapshot": "snapshot_1773835798.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T17:40:00.173502",
+    "status": "no_face",
+    "snapshot": "snapshot_1773835800.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T17:40:01.495092",
+    "status": "ok",
+    "snapshot": "snapshot_1773835801.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T17:40:02.783155",
+    "status": "ok",
+    "snapshot": "snapshot_1773835802.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T17:40:04.083382",
+    "status": "ok",
+    "snapshot": "snapshot_1773835804.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T17:40:21.598762",
+    "status": "ok",
+    "snapshot": "snapshot_1773835821.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T17:40:34.979764",
+    "status": "ok",
+    "snapshot": "snapshot_1773835834.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T17:40:50.058971",
+    "status": "ok",
+    "snapshot": "snapshot_1773835850.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T17:41:05.125506",
+    "status": "ok",
+    "snapshot": "snapshot_1773835865.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T17:41:13.172050",
+    "status": "ok",
+    "snapshot": "snapshot_1773835873.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T17:41:28.536969",
+    "status": "ok",
+    "snapshot": "snapshot_1773835888.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T17:41:36.602769",
+    "status": "ok",
+    "snapshot": "snapshot_1773835896.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T17:41:46.980827",
+    "status": "multi_face",
+    "snapshot": "snapshot_1773835906.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T17:42:01.382086",
+    "status": "multi_face",
+    "snapshot": "snapshot_1773835921.jpg",
+    "mode": "monitor"
+  }
+]

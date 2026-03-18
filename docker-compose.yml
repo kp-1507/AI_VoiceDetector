@@ -1,30 +1,49 @@
-version: "3.8"
 services:
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
+    restart: unless-stopped
     env_file:
-      - ./backend/.env   # MongoDB info
+      - ./backend/.env
+    environment:
+      NODE_ENV: production
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_EXPRESS_BACKEND_URI: ${REACT_APP_EXPRESS_BACKEND_URI:-http://localhost:5000/api}
+        REACT_APP_VIVA_ENGINE_URI: ${REACT_APP_VIVA_ENGINE_URI:-http://localhost:8501}
     ports:
-      - "3000:3000"
+      - "3000:80"
+    restart: unless-stopped
     depends_on:
-      - backend
-    environment:
-      - REACT_APP_API_URL=http://localhost:5000
-      - REACT_APP_VIVA_ENGINE_URI=http://localhost:8501
+      backend:
+        condition: service_healthy
+      viva_engine:
+        condition: service_healthy
 
   viva_engine:
-    build: ./viva_engine
+    build:
+      context: ./viva_engine
+      dockerfile: Dockerfile
     ports:
       - "8501:8501"
+    restart: unless-stopped
     volumes:
-      - ./viva_engine/interviews:/app/interviews
+      - viva_interviews:/app/interviews
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
     env_file:
-      - ./viva_engine/.env   # API keys
+      - ./viva_engine/.env
+    environment:
+      NODE_BACKEND_URL: http://backend:5000
+
+volumes:
+  viva_interviews:
 

@@ -1,0 +1,24 @@
+[
+    {
+        "question": "How has the rise of Artificial Intelligence impacted global labor markets in recent years?",
+        "answer": "very very mixed reaction in some industry we can see the creation of jobs on the other end in some industry we can see their job losses the industries phase of secreted and mostly related to a development or application jobs and In Jobs where there is automation possible there has been its work close friend",
+        "kimi_score": 4.0,
+        "gemini_score": 6.0,
+        "llama_3.3_score": 4.0,
+        "average_score": 4.67,
+        "kimi_feedback": "Contains a valid contrast of job creation vs loss but lacks specifics, structure, and clear terminology.",
+        "gemini_feedback": "The answer is partially accurate and covers some aspects but lacks clarity and specific examples.",
+        "llama_feedback": "Answer lacks clarity and proper terminology to fully address the impact of AI on global labor markets"
+    },
+    {
+        "question": "Why is climate finance a critical issue in international climate negotiations?",
+        "answer": "climate finance is important issue in international climate negotiation because climate change is something which is affecting the whole world whether it is the development of the developing world but when we consider the historical trend the developed countries are more responsible for the current current state of the climate change so the transfer of money to the developed country to develop countries important support their growth as well as climate",
+        "kimi_score": 6.0,
+        "gemini_score": 7.0,
+        "llama_3.3_score": 6.0,
+        "average_score": 6.33,
+        "kimi_feedback": "Correctly identifies historical responsibility and need for transfers, but lacks precision on finance purpose, mixes developed/developed, and misses key terms like mitigation/adaptation and the $100bn pledge.",
+        "gemini_feedback": "The answer correctly identifies the core reasons for climate finance's importance but could be more concise and structured.",
+        "llama_feedback": "Answer partially addresses the issue of climate finance with some logical reasoning but lacks clarity and correct terminology"
+    }
+]

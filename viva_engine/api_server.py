@@ -378,6 +378,7 @@ def init_session(payload: VivaSessionInit) -> Dict[str, Any]:
     attempt_id = datetime.now().strftime("%Y%m%d_%H%M%S")
     attempt_dir = INTERVIEWS_DIR / f"{_safe_name(student_id)}_{attempt_id}"
     attempt_dir.mkdir(parents=True, exist_ok=True)
+    (attempt_dir / "incident_log.json").write_text("[]", encoding="utf-8")
 
     session = SESSIONS.create(
         {

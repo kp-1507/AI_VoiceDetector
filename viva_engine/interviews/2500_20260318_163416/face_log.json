@@ -1,0 +1,56 @@
+[
+  {
+    "timestamp": "2026-03-18T16:34:30.662176",
+    "status": "ok",
+    "snapshot": "snapshot_1773831870.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T16:34:31.652707",
+    "status": "ok",
+    "snapshot": "snapshot_1773831871.jpg",
+    "mode": "check"
+  },
+  {
+    "timestamp": "2026-03-18T16:34:55.013510",
+    "status": "ok",
+    "snapshot": "snapshot_1773831895.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T16:35:07.093801",
+    "status": "multi_face",
+    "snapshot": "snapshot_1773831907.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T16:35:19.142682",
+    "status": "multi_face",
+    "snapshot": "snapshot_1773831919.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T16:35:27.508200",
+    "status": "ok",
+    "snapshot": "snapshot_1773831927.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T16:35:36.564517",
+    "status": "multi_face",
+    "snapshot": "snapshot_1773831936.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T16:35:50.921992",
+    "status": "ok",
+    "snapshot": "snapshot_1773831950.jpg",
+    "mode": "monitor"
+  },
+  {
+    "timestamp": "2026-03-18T16:35:59.285213",
+    "status": "ok",
+    "snapshot": "snapshot_1773831959.jpg",
+    "mode": "monitor"
+  }
+]
