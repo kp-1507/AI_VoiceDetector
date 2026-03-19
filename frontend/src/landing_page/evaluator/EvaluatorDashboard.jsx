@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "../../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -8,18 +8,26 @@ const EvaluatorDashboard = () => {
    const navigate = useNavigate();
 
    useEffect(() => {
-      axios
-         .get("http://localhost:5000/api/evaluator/tests", { withCredentials: true })
+      axiosInstance
+         .get("/evaluator/tests", { withCredentials: true })
          .then((res) => setTests(res.data.tests))
-         .catch(() => toast.error("Could not fetch assigned tests"));
-   }, []);
+         .catch((err) => {
+            const status = err?.response?.status;
+            if (status === 401) {
+               toast.error("Session expired. Please login again.");
+               navigate("/evaluator/login");
+               return;
+            }
+            toast.error(err?.response?.data?.msg || "Could not fetch assigned tests");
+         });
+   }, [navigate]);
 
    const handleDeleteAccount = async () => {
       if (!window.confirm("Are you sure you want to delete your evaluator account? This cannot be undone.")) {
          return;
       }
       try {
-         await axios.delete("http://localhost:5000/api/evaluator/me", { withCredentials: true });
+         await axiosInstance.delete("/evaluator/me", { withCredentials: true });
          toast.success("Account deleted. Logging out...");
          setTimeout(() => navigate("/evaluator/login"), 1500);
       } catch (err) {

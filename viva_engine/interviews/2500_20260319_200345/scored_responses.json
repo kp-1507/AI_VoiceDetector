@@ -1,0 +1,24 @@
+[
+    {
+        "question": "How has the rise of Artificial Intelligence impacted global labor markets in recent years?",
+        "answer": "tractor Global marketing mix",
+        "kimi_score": 0.0,
+        "gemini_score": 0.0,
+        "llama_3.3_score": 0.0,
+        "average_score": 0.0,
+        "kimi_feedback": "Answer is completely irrelevant to the question.",
+        "gemini_feedback": "The answer is completely irrelevant to the question asked.",
+        "llama_feedback": "The answer is completely unrelated to the question about Artificial Intelligence and labor markets"
+    },
+    {
+        "question": "Why is climate finance a critical issue in international climate negotiations?",
+        "answer": "today rich countries which countries have the poor countries in order to mitigate the climate change in a property",
+        "kimi_score": 1.0,
+        "gemini_score": 2.0,
+        "llama_3.3_score": 2.0,
+        "average_score": 1.67,
+        "kimi_feedback": "Answer is incoherent and lacks factual accuracy, coverage, reasoning, clarity, and correct terminology.",
+        "gemini_feedback": "The answer is very unclear and lacks factual accuracy and proper terminology.",
+        "llama_feedback": "The answer lacks clarity and accuracy in explaining why climate finance is a critical issue in international climate negotiations"
+    }
+]

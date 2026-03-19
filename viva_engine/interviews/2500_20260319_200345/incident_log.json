@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-03-19T20:04:22.655000+05:30",
+    "incident_type": "fullscreen_exit",
+    "phase": "interview",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-03-19T20:04:24.542000+05:30",
+    "incident_type": "fullscreen_reentered",
+    "phase": "interview",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-03-19T20:04:34.074000+05:30",
+    "incident_type": "fullscreen_exit",
+    "phase": "interview",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-03-19T20:04:36.321000+05:30",
+    "incident_type": "fullscreen_reentered",
+    "phase": "interview",
+    "details": {}
+  }
+]

@@ -288,11 +288,30 @@ export const acceptEvaluatorAssignment = async (req, res) => {
    console.log(test)
    if (!test) return res.status(404).json({ msg: "Test not found" });
 
+   const evaluator = await Evaluator.findById(payload.evaluatorId);
+   if (!evaluator) return res.status(404).json({ msg: "Evaluator not found" });
+
    if (!test.evaluators.includes(payload.evaluatorId)) {
       test.evaluators.push(payload.evaluatorId);
       await test.save();
    }
-   res.json({ msg: "You are now an evaluator for this test" });
+
+   // Establish evaluator session so dashboard can load immediately after accept link.
+   const jwtToken = jwt.sign(
+      { _id: evaluator._id, email: evaluator.email, role: "evaluator" },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+   );
+   res.cookie("evaluator_token", jwtToken, {
+      httpOnly: true,
+      maxAge: 7 * 24 * 3600 * 1000,
+      sameSite: "strict",
+   });
+
+   res.json({
+      msg: "You are now an evaluator for this test",
+      evaluator: { _id: evaluator._id, email: evaluator.email, name: evaluator.name },
+   });
 };
 
 // Utility function (not Express handler)
