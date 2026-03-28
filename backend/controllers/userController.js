@@ -69,6 +69,7 @@ export const registerUser = async (req, res) => {
          username,
          email,
          password,
+         adminPassword,
          role = "student",
          studentData,
          examinerData,
@@ -76,6 +77,16 @@ export const registerUser = async (req, res) => {
 
       if (!["student", "examiner"].includes(role))
          return res.status(400).json({ msg: "Invalid role specified" });
+
+      if (role === "examiner") {
+         const expectedAdminPassword = process.env.ADMIN_PASSWORD;
+         if (!expectedAdminPassword) {
+            return res.status(500).json({ msg: "Server admin password is not configured" });
+         }
+         if (adminPassword !== expectedAdminPassword) {
+            return res.status(401).json({ msg: "Admin password incorrect!" });
+         }
+      }
 
       if (await User.findOne({ email }))
          return res.status(400).json({ msg: "User already registered" });

@@ -14,7 +14,7 @@ const Prof_Signup = ({ onClose }) => {
     password: "",
     username: "",
     department: "",
-    adminPassword: "" // ✅ New field
+    adminPassword: "",
   });
 
   const { name, email, password, username, department, adminPassword } = inputValue;
@@ -40,20 +40,15 @@ const Prof_Signup = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Check admin password before API call
-if (adminPassword !== process.env.ADMIN_PASSWORD) {
-  handleError("Admin password incorrect!");
-  return;
-}
-
     try {
       const payload = {
         name,
         username,
         email,
         password,
+        adminPassword,
         role: "examiner",
-        examinerData: { department }
+        examinerData: { department },
       };
 
       const { data } = await axios.post(
@@ -64,7 +59,6 @@ if (adminPassword !== process.env.ADMIN_PASSWORD) {
 
       handleSuccess(data.msg);
       setTimeout(() => {
-        const profName = username.replace(/\s+/g, '-').toLowerCase();
         navigate("/");
       }, 1000);
     } catch (error) {
@@ -82,7 +76,7 @@ if (adminPassword !== process.env.ADMIN_PASSWORD) {
       password: "",
       username: "",
       department: "",
-      adminPassword: ""
+      adminPassword: "",
     });
   };
 
@@ -151,7 +145,6 @@ if (adminPassword !== process.env.ADMIN_PASSWORD) {
           />
         </div>
 
-        {/* ✅ Admin Password Field */}
         <div className="form-group">
           <label>Admin Password:</label>
           <input
